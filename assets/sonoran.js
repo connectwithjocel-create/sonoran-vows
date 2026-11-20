@@ -1,4 +1,4 @@
-/* Sonoran Vows — shared JS (vanilla, dependency-free). Safe to include once per page. */
+/* Sonoran Vows, shared JS (vanilla, dependency-free). Safe to include once per page. */
 (function () {
   if (window.__sv) return; window.__sv = 1;
   var C = window.SV_CONFIG || {};
@@ -38,14 +38,14 @@
       $$('a', dr).forEach(function (a) { a.addEventListener('click', function () { setD(false); }); });
     }
 
-    /* reveals — fade, photo masks, drawn lines, botanicals */
+    /* reveals, fade, photo masks, drawn lines, botanicals */
     var T = $$('.sv [data-rv], .sv [data-draw], .sv .exp');
     if ('IntersectionObserver' in window && !RM) {
       var io = new IntersectionObserver(function (es) { es.forEach(function (x) { if (x.isIntersecting) { x.target.classList.add('in'); io.unobserve(x.target); } }); }, { rootMargin: '0px 0px -10% 0px', threshold: .1 });
       T.forEach(function (t) { io.observe(t); });
     } else T.forEach(function (t) { t.classList.add('in'); });
 
-    /* services index — hovering a row changes the featured photograph */
+    /* services index, hovering a row changes the featured photograph */
     $$('[data-svx]').forEach(function (w) {
       var rows = $$('.svr', w), ims = $$('.svx-media .ph', w), tag = $('.svx-media .tagline', w);
       function on(i) { rows.forEach(function (r, k) { r.classList.toggle('on', k === i); }); ims.forEach(function (m, k) { m.classList.toggle('on', k === i); }); if (tag) tag.textContent = rows[i].getAttribute('data-s'); }
@@ -72,7 +72,7 @@
         b.addEventListener('click', function () {
           var name = b.getAttribute('data-save-style'), ok = store.set('sv_style', { name: name, palette: b.getAttribute('data-pal') });
           var msg = b.parentNode.querySelector('.saved-msg');
-          msg.textContent = ok ? name + ' is saved — it will be added to your wedding inquiry.' : 'Your browser blocked saving; you can choose this style in the inquiry form.';
+          msg.textContent = ok ? name + ' is saved. It will be added to your wedding inquiry.' : 'Your browser blocked saving; you can choose this style in the inquiry form.';
         });
       });
       var saved = store.get('sv_style');
@@ -90,7 +90,7 @@
         $$('[data-group]', mb).forEach(function (g) { g.hidden = g.getAttribute('data-group') !== st.atmos; });
         $$('.heart', mb).forEach(function (h) { var on = st.imgs.some(function (x) { return x.k === h.getAttribute('data-k'); }); h.setAttribute('aria-pressed', on); h.setAttribute('aria-label', (on ? 'Remove ' : 'Save ') + h.getAttribute('data-alt') + (on ? ' from' : ' to') + ' your board'); });
         var aL = $('input[name=mb_atmos]:checked', mb), pL = $('input[name=mb_pal]:checked', mb);
-        sA.textContent = aL ? aL.getAttribute('data-label') : '—'; sP.textContent = pL ? pL.getAttribute('data-label') : 'not chosen yet';
+        sA.textContent = aL ? aL.getAttribute('data-label') : 'none'; sP.textContent = pL ? pL.getAttribute('data-label') : 'not chosen yet';
         cnt.textContent = st.imgs.length;
         list.innerHTML = st.imgs.length ? '' : '<p class="mb-empty">Tap the heart on any image to save it here.</p>';
         st.imgs.forEach(function (x) { var f = document.createElement('figure'); f.className = 'ph'; var im = new Image(); im.src = x.src; im.alt = x.alt; im.onerror = function () { f.classList.add('fb'); }; f.setAttribute('data-cap', x.alt); f.appendChild(im); list.appendChild(f); });
@@ -127,14 +127,14 @@
       });
       if (lb && lb.showModal) {
         var li = $('img', lb), lp = $('p', lb), last;
-        it.forEach(function (i) { i.addEventListener('click', function () { var im = $('img', i); last = i; li.src = im.currentSrc || im.src; li.alt = im.alt; lp.textContent = i.getAttribute('data-t') + ' — editorial inspiration'; lb.showModal(); }); });
+        it.forEach(function (i) { i.addEventListener('click', function () { var im = $('img', i); last = i; li.src = im.currentSrc || im.src; li.alt = im.alt; lp.textContent = i.getAttribute('data-t') + ', editorial inspiration'; lb.showModal(); }); });
         $('.x', lb).addEventListener('click', function () { lb.close(); });
         lb.addEventListener('click', function (ev) { if (ev.target === lb) lb.close(); });
         lb.addEventListener('close', function () { last && last.focus(); });
       }
     });
 
-    /* FORMS — validation, steps, saved inspiration, draft persistence, honest submission */
+    /* FORMS, validation, steps, saved inspiration, draft persistence, honest submission */
     $$('.sv form.vf').forEach(function (f) {
       var steps = $$('.step', f), nav = $$('.snav li', f), meter = $('.fmeter i', f), st = 0, stat = $('.fstat', f);
       var bN = $('[data-next]', f), bP = $('[data-prev]', f), bS = $('[type=submit]', f), KEY = 'sv_inq_' + f.getAttribute('data-form');
@@ -178,7 +178,7 @@
         if (sty) { h += 'Wedding style: ' + sty.name + '. '; var s1 = $('[name=wedding_style]', f); if (s1 && !s1.value) s1.value = sty.name; $('[name=saved_style]', f).value = sty.name; }
         if (bd) {
           var parts = []; if (bd.atmosLabel) parts.push('atmosphere: ' + bd.atmosLabel); if (bd.palLabel) parts.push('palette: ' + bd.palLabel); if (bd.imgs && bd.imgs.length) parts.push(bd.imgs.length + ' saved image' + (bd.imgs.length > 1 ? 's' : '') + ' (' + bd.imgs.map(function (x) { return x.alt; }).join('; ') + ')');
-          if (parts.length) { h += 'Moodboard — ' + parts.join(', ') + '.'; $('[name=saved_moodboard]', f).value = parts.join(' | '); }
+          if (parts.length) { h += 'Moodboard, ' + parts.join(', ') + '.'; $('[name=saved_moodboard]', f).value = parts.join(' | '); }
           var s2 = $('[name=color_palette]', f); if (s2 && !s2.value && bd.palLabel) s2.value = bd.palLabel;
         }
         box.innerHTML = h + ' <span class="hint">These will be included with your inquiry.</span>'; box.hidden = false;
