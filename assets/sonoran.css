@@ -465,3 +465,74 @@ font-family:var(--sans);font-size:16.5px;line-height:1.75;color:var(--esp);backg
 @media (prefers-reduced-motion:reduce){.sv *,.sv *::before,.sv *::after{animation:none!important;transition:none!important}.sv [data-rv]{opacity:1!important;transform:none!important}.sv [data-rv] img{clip-path:none!important;transform:none!important}
 .sv .hl,.sv .bot path{stroke-dashoffset:0!important}.sv .horizon .hs{opacity:1!important}.sv .exp-line i{transform:none!important}}
 .sv .intro .p2 .ph,.sv .intro .p2 .ph img{width:100%;height:100%;object-fit:cover}
+
+/* ===== LUXE LAYER: bolder, higher-contrast "desert luxe" look. Remove this block to restore the original design. ===== */
+.sv{--tc:#C25B3C;--tcd:#A3442A;--gold:#D2A75E;--golddk:#9A7535;--mu:#5A4E47;--esp:#2E2522;--deep:#1E1715;--blush:#F3DDCF;
+--h2:clamp(2.6rem,1.5rem + 3.6vw,5rem);font-size:17px;color:var(--esp)}
+.sv h1,.sv h2{font-weight:500;letter-spacing:-.015em}
+.sv h1 em,.sv h2 em,.sv h3 em{color:var(--tc)}
+.sv .ey{color:var(--tcd);font-weight:700;letter-spacing:.32em}
+.sv .ey::before,.sv .ey.c::after{width:56px;height:2px;background:linear-gradient(90deg,var(--gold),var(--tc))}
+.sv .lead{color:#4E433D}
+
+/* buttons: warm gradient + glow + lift */
+.sv .btn{background:linear-gradient(120deg,#C9633F,#A3442A 55%,#8C3A22);border-color:transparent;box-shadow:0 14px 30px -14px rgba(163,68,42,.75);transition:transform .35s var(--ease),box-shadow .35s var(--ease),background .35s,color .35s,border-color .35s}
+.sv .btn:hover{transform:translateY(-3px);box-shadow:0 22px 40px -16px rgba(163,68,42,.85);background:linear-gradient(120deg,#D97A4F,#B24E31 55%,#963F26)}
+.sv .btn--ghost{background:transparent;box-shadow:none;border-color:currentColor}
+.sv .btn--ghost:hover{box-shadow:0 18px 36px -18px rgba(0,0,0,.5)}
+.sv .hdr:not(.scr):not(.solid) .btn{box-shadow:none}
+
+/* hero: stronger veil on the text side, bigger gold script, no overlap */
+.sv .hero .veil{background:linear-gradient(90deg,rgba(30,23,21,.82) 0%,rgba(30,23,21,.45) 45%,rgba(30,23,21,.05) 75%),linear-gradient(0deg,rgba(30,23,21,.9) 0%,rgba(30,23,21,0) 55%)}
+.sv .hero .glow{background:radial-gradient(ellipse 55% 45% at 20% 85%,rgba(210,120,70,.4),transparent 70%)}
+.sv .hero h1{text-shadow:0 4px 40px rgba(0,0,0,.35)}
+.sv .hero h1 .scr{font-size:1.5em;margin:.08em 0 0 .5em;line-height:1.05;padding-bottom:.08em;background:linear-gradient(100deg,#F6D9A8 0%,#E9A27E 45%,#D2A75E 100%);-webkit-background-clip:text;background-clip:text;color:transparent;text-shadow:none;filter:drop-shadow(0 4px 18px rgba(0,0,0,.35))}
+.sv .hero .lead{color:#F3E9E1;font-size:clamp(1.1rem,1rem + .4vw,1.3rem)}
+.sv .hero .ey{color:#F0C9A0}
+
+/* photos: depth + hover zoom */
+.sv .ph{overflow:hidden}
+.sv .ph img{transition:transform 1.4s var(--ease)}
+.sv a:hover .ph img,.sv .ph:hover img{transform:scale(1.05)}
+.sv .intro .p1,.sv .intro .p2,.sv .why-art .ph,.sv .svx-media,.sv .phero-art .arch{box-shadow:0 40px 70px -40px rgba(30,23,21,.6)}
+
+/* dark band: services */
+.sv .sec.iv:has(.svx){background:radial-gradient(ellipse 70% 60% at 85% 0%,rgba(194,91,60,.28),transparent 60%),linear-gradient(180deg,#2A211E,#1E1715);color:#F6EEE7}
+.sv .sec.iv:has(.svx) .ey{color:#E9B98A}
+.sv .sec.iv:has(.svx) h2 em,.sv .sec.iv:has(.svx) .svr .s{color:#EFA585}
+.sv .sec.iv:has(.svx) .lead,.sv .sec.iv:has(.svx) .svr p{color:#D6C9BF}
+.sv .sec.iv:has(.svx) .svr .n{color:var(--gold)}
+.sv .sec.iv:has(.svx) .svr .ar{stroke:#F6EEE7}
+.sv .sec.iv:has(.svx) .svr:hover h3,.sv .sec.iv:has(.svx) .svr.on h3{color:#F2B593}
+.sv .sec.iv:has(.svx) .svr{border-bottom-color:rgba(210,167,94,.35)}
+.sv .sec.iv:has(.svx) .svx-media .tagline{background:var(--esp);color:#F2B593;box-shadow:0 20px 40px -20px #000}
+
+/* warm band: style explorer */
+.sv .sx{background:radial-gradient(ellipse 60% 50% at 10% 10%,rgba(255,255,255,.55),transparent 60%),linear-gradient(160deg,#F6E3D5,#EBC8B2)}
+
+/* dark band: experience timeline */
+.sv .sec.iv:has(.exp){background:linear-gradient(180deg,#1E1715,#2E2522);color:#F6EEE7}
+.sv .sec.iv:has(.exp) .ey{color:#E9B98A}
+.sv .sec.iv:has(.exp) h2 em,.sv .sec.iv:has(.exp) .stp .scr{color:#EFA585}
+.sv .sec.iv:has(.exp) .lead,.sv .sec.iv:has(.exp) .stp p{color:#D6C9BF}
+.sv .sec.iv:has(.exp) .stp .dot{background:transparent;color:var(--gold);border-color:var(--gold)}
+.sv .sec.iv:has(.exp) .exp.in .stp .dot{background:linear-gradient(135deg,#E2B872,#B98A43);color:var(--deep);box-shadow:0 0 0 8px rgba(210,167,94,.12),0 0 40px rgba(210,167,94,.35)}
+.sv .sec.iv:has(.exp) .lnk{color:#F6EEE7}
+
+/* deep sage band: why us */
+.sv .sec.sagel:has(.why){background:linear-gradient(160deg,#3E4636,#2A3025);color:#F1F0E8}
+.sv .sec.sagel:has(.why) .ey{color:#DCC79A}
+.sv .sec.sagel:has(.why) h2 em{color:#EFB592}
+.sv .sec.sagel:has(.why) .lead,.sv .sec.sagel:has(.why) .why-grid p{color:#D3D5C8}
+.sv .sec.sagel:has(.why) .why-grid div{border-top-color:rgba(210,167,94,.5)}
+
+/* final call-to-action card */
+.sv .fcta .veil{background:linear-gradient(rgba(30,23,21,.45),rgba(30,23,21,.75))}
+.sv .fcta-card{box-shadow:0 50px 90px -40px rgba(0,0,0,.7)}
+
+/* inner-page heroes */
+.sv .phero--arch,.sv .phero--quiet{background:radial-gradient(ellipse 60% 70% at 100% 0%,rgba(194,91,60,.16),transparent 60%),var(--sand)}
+
+@media(prefers-reduced-motion:reduce){.sv .btn:hover{transform:none}.sv a:hover .ph img,.sv .ph:hover img{transform:none}}
+.sv .btn{line-height:1.35}
+.sv .btn>span{text-align:left}
