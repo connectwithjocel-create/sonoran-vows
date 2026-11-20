@@ -536,3 +536,34 @@ font-family:var(--sans);font-size:16.5px;line-height:1.75;color:var(--esp);backg
 @media(prefers-reduced-motion:reduce){.sv .btn:hover{transform:none}.sv a:hover .ph img,.sv .ph:hover img{transform:none}}
 .sv .btn{line-height:1.35}
 .sv .btn>span{text-align:left}
+
+/* ===== LUXE LAYER round 2: layout fixes, larger type, warm texture ===== */
+/* warm paper grain on every section (sits behind content) */
+.sv .sec{isolation:isolate}
+.sv .sec::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;opacity:.5;mix-blend-mode:multiply;
+background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .55 0 0 0 0 .42 0 0 0 0 .32 0 0 0 .18 0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E")}
+.sv .sec.iv:has(.svx)::before,.sv .sec.iv:has(.exp)::before,.sv .sec.sagel:has(.why)::before{mix-blend-mode:screen;opacity:.25}
+
+/* readable type */
+.sv .nav li>a{font-size:.9rem;font-weight:600}
+.sv .ey{font-size:.8rem}
+.sv .svr p,.sv .stp p,.sv .why-grid p,.sv .pkc ul,.sv .pkc .for{font-size:1rem}
+.sv .lead{font-size:clamp(1.12rem,1rem + .45vw,1.32rem)}
+
+/* intro: photos sit beside the text instead of dropping below it */
+@media(min-width:961px){.sv .intro{grid-template-columns:1.05fr .95fr 1.1fr;align-items:center}
+.sv .intro .p2{margin-top:28%}
+.sv .intro .p1{aspect-ratio:3/4.4}}
+
+/* services: tighten the gap between heading and list */
+.sv .sec.iv:has(.svx) .two.c{margin-bottom:clamp(2rem,4vw,3.5rem)}
+.sv .sec.iv:has(.svx) h2{font-size:clamp(2.8rem,1.6rem + 3.8vw,5.4rem)}
+
+/* why: framed photo with a gold border glow */
+.sv .why-art .ph{outline:1px solid rgba(210,167,94,.6);outline-offset:12px;border-radius:999px 999px 0 0}
+
+/* style explorer + packages: lift the cards */
+.sv .pkc{box-shadow:0 30px 60px -40px rgba(46,37,34,.45);transition:transform .45s var(--ease),box-shadow .45s var(--ease)}
+.sv .pkc:hover{transform:translateY(-8px);box-shadow:0 40px 70px -40px rgba(46,37,34,.6)}
+.sv .pkc.mid:hover{transform:translateY(calc(-1.6rem - 8px))}
+@media(prefers-reduced-motion:reduce){.sv .pkc:hover,.sv .pkc.mid:hover{transform:none}}
